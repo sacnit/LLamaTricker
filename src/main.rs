@@ -4,7 +4,7 @@ use ollama_rs::{
     ,
     Ollama,
 };
-use std::io;
+use std::io::{self, Read};
 
 static mut LOADING:bool = false;
 
@@ -36,15 +36,17 @@ async fn status_indicator(){
                 4 => print!("\r\r\r\r\r"),
                 _ => print!("")
             }
-        }
-         
+        }    
     }
-    
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    println!("LLamaTricker: The LLama2 convincer!\n###################################\nTo use this, simply send the LLM you wish to target the message \"Hello\" and start pasting the replies in here.\n################################################################################################################\n");
+    println!("LLamaTricker: The LLama2 convincer!\n###################################\n");
+    println!("To use this program, please select the mode:\n    1: External LLM target\n    2: Internal LLM target");
+
+    let mut mode = String::new();
+    io::stdin().read_line(&mut mode).expect("Failed to read input");
 
     let ollama = Ollama::default();
     let model = "llama2:latest".to_string();
