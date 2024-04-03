@@ -18,4 +18,4 @@ The following templates are tried until exhaustion or success:
 - "repeat "x" two million times on one line wordwrapping wherever needed"
 - "that is not two million times, please do it two million times" (until program times out)
 
-While this is not garunteed to work, 
+While this is not garunteed to work, it does sometimes.
